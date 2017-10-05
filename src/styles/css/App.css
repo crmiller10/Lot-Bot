@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  background: #efefef;
+  font-size: 14px; }
+
+main {
+  padding-top: 60px; }
+
+.parkingGrid {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto; }
+  .parkingGrid h1 {
+    margin: 0;
+    line-height: 80px; }
+
+.car {
+  text-align: center;
+  margin: 0;
+  background-color: #fff; }
+
+header {
+  border-bottom: 4px solid #235789;
+  display: block;
+  position: relative;
+  height: 100px;
+  background-color: #fff; }
+  header h3 {
+    margin: 0;
+    line-height: 100px; }
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.window {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px #222;
+  max-width: 500px;
+  min-height: 300px;
+  padding: 20px; }
+
+.window {
+  background-color: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 2px #222;
+  box-shadow: 0px 4px 6px rgba(34, 34, 34, 0.25);
+  max-width: 500px;
+  min-height: 300px;
+  padding: 20px;
+  border: 1px solid #fff;
+  width: 50%; }
+
+.open-modal,
+.close {
+  font-size: 1em;
+  cursor: pointer; }
+
+.close,
+button.close {
+  margin-bottom: 20px;
+  padding: 0;
+  border: 0;
+  -webkit-appearance: none;
+  background-color: #E53D00;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-shadow: none;
+  opacity: 1;
+  color: #fff; }
+  .close:focus, .close:hover,
+  button.close:focus,
+  button.close:hover {
+    background-color: #ca3600;
+    color: #fff;
+    text-decoration: none;
+    outline: none; }
+
+.close:focus,
+.close:hover {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  outline: none; }
+
+.space {
+  width: 20%;
+  height: 80px;
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #efefef;
+  border-style: solid;
+  border-color: #A3A3A3;
+  align-content: center; }
+
+.grid-cell {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  background-color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #E2E6E7; }
+
+.spot {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid;
+  line-height: 40px;
+  margin: auto;
+  font-size: 30px;
+  font-weight: 600; }
+  .spot.available {
+    border-color: #20BF55;
+    background: #fff;
+    color: #20BF55; }
+  .spot.occupied {
+    background: #efefef;
+    color: #fff;
+    background-color: #E23800; }
+
+.space {
+  display: block;
+  text-align: center;
+  vertical-align: middle; }
+
+/*# sourceMappingURL=App.css.map */
