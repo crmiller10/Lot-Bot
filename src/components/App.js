@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import router
 import { Switch, Route, withRouter} from 'react-router-dom';
-import '../styles/css/limitless/icons/icomoon/styles.css'
 //import redux goodies
 import { connect } from 'react-redux';
 
@@ -19,6 +18,8 @@ class App extends Component {
   componentDidMount(){
     this.props.display()
   }
+
+  //
 
   render() {
 
@@ -51,7 +52,6 @@ function mapState2Props(state){
 function mapDispatch2Props(dispatch){
   return{
     display: function(){
-      // fetch("https://theboatlot.herokuapp.com/lots")
       fetch("https://polar-atoll-91152.herokuapp.com/lots")
         .then(resp => resp.json())
         .then( resp =>

@@ -1,80 +1,102 @@
 import React, { Component } from 'react';
 
+import Modal from './Modal';
+
 class Space extends Component {
 
- constructor() {
-   super();
+ constructor(props) {
+   super(props);
    this.state = {
+     text: '',
      isOpen: false
    };
-
-   this.toggleModal = this.toggleModal.bind(this);
  }
 
- toggleModal() {
+ toggleModal = () => {
+    fetch(`https://polar-atoll-91152.herokuapp.com/lots/${this.props.lot}/${this.props.id}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+       "licensePlate": this.state.text
+      }),
+    })//.then this.props.
+
    this.setState({
      isOpen: !this.state.isOpen
    });
  }
 
-  render(){
-    // let spotWrap = {
-    //   width: "80px",
-    //   height: "80px",
-    //   display: "flex",
-    //   backgroundColor:"#fff",
-    //   borderWidth: "1px",
-    //   borderStyle: "solid",
-    //   borderColor: "#E2E6E7",
-    // }
 
-    // if( this.props.car === null){
+
+
+ handleText(event) {
+   this.setState({
+     text: event.target.value,
+   });
+   console.log(event.target.value)
+ }
+
+
+  render(){
+
     if( this.props.space === null){
       return(
-      <div className="grid-cell open-modal" onClick={this.toggleModal}>
+      <div className="grid-cell">
         <div className="spot available flex-center text-center">P</div>
-        { this.state.isOpen && <Modal onToggleModal={ this.toggleModal } /> }
       </div>
       )
     } else {
       return(
-        <div className="grid-cell open-modal" onClick={this.toggleModal}>
+        <div className="grid-cell">
+
+          <button onClick={this.toggleModal}>
+            Open the modal
+          </button>
+
+          <Modal show={this.state.isOpen}
+            onClose={this.toggleModal}>
+            Here's some content for the modal
+            <input className="form-control" type="text" placeholder="text Title" value={this.state.text}
+            onChange={event => this.handleText(event)}/>
+          </Modal>
+
             <div className="spot occupied flex-center text-center">P</div>
-          { this.state.isOpen && <Modal onToggleModal={ this.toggleModal } /> }
       </div>
       )
     }
-
   }
 }
 
-// Modal
-const Modal = ({ onToggleModal }) => {
-  return (
-    <div
-      className="background" onClick={onToggleModal}
-    >
-      <div
-        className="window"
-        onClick={event => event.stopPropagation()}
-      >
-        <button
-          className="btn btn-primary close"
-          onClick={onToggleModal}
-        >
-          Close here
-        </button>
-        <div className="form-group">
-          <input className="form-control" type="text"/>
-        </div>
-        <div className="form-group">
-          <input className="form-control" type="text"/>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-
 export default Space;
-// <h1 className="car">&#128741;</h1>
+
+
+
+// constructor(props) {
+//   super(props);
+
+//   this.state = { isOpen: false };
+// }
+
+// toggleModal = () => {
+//   this.setState({
+//     isOpen: !this.state.isOpen
+//   });
+// }
+
+// render() {
+//   return (
+//     <div className="App">
+//       <button onClick={this.toggleModal}>
+//         Open the modal
+//       </button>
+
+//       <Modal show={this.state.isOpen}
+//         onClose={this.toggleModal}>
+//         Here's some content for the modal
+//       </Modal>
+//     </div>
+//   );
+// }

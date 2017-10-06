@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 
-// import Space from './Modal';
 import Space from './Space';
 
 class ParkingGrid extends Component {
@@ -11,26 +10,25 @@ class ParkingGrid extends Component {
     //name of the currentLot
     const currentLot = parseInt(this.props.currentLot);
     console.log(currentLot)
-    // console.log(currentLot)
+
     //map through the lots that are currently held in the store and find the one whose name matches the value of the current lot.
     console.log(this.props.lots[currentLot])
 
     const lot = this.props.lots[currentLot]
-    //   console.log(lot)
+      console.log(lot)
     //   //iterate through the spots array for the matching lot
 
     // lot.spaces.map( (space, index) => <Space key={index} car={space.car}/>))}
       let spaces = null;
       if (lot !== undefined) {
-        spaces = lot.spaces.map( (space, index) => <Space key={index} space={space}/>);
+        spaces = lot.spaces.map( (space, index) => <Space key={index} id={index} lot={currentLot} space={space}/>);
       }
 
     // });
 
-    // console.log(spaces)
+    console.log(spaces)
     return(
       <div className="parkingGrid">
-
         {spaces}
       </div>
     )

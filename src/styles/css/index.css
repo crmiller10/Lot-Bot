@@ -56,11 +56,11 @@ header {
   border-radius: 4px;
   -webkit-box-shadow: 2px 2px 2px #222;
   box-shadow: 0px 4px 6px rgba(34, 34, 34, 0.25);
-  max-width: 500px;
+  max-width: 400px;
   min-height: 300px;
   padding: 20px;
   border: 1px solid #fff;
-  width: 50%; }
+  width: 40%; }
 
 .open-modal,
 .close {
@@ -137,5 +137,17 @@ button.close {
   display: block;
   text-align: center;
   vertical-align: middle; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: block;
+  overflow: hidden;
+  outline: 0;
+  height: 400px; }
 
 /*# sourceMappingURL=index.css.map */

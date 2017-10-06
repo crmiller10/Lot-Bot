@@ -1,103 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
-// // Random colors
-// const colors = [
-//   'rgba(255,0,0,0.5)',
-//   'rgba(255,255,0,0.5)',
-//   'rgba(0,255,0,0.5)',
-//   'rgba(0,255,255,0.5)',
-//   'rgba(0,0,255,0.5)'
-// ];
-
-// const randomColor = () => {
-//   return colors[Math.floor(Math.random() * colors.length)];
-// };
-
-// // App
 class Modal extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false
+  render() {
+    // Render nothing if the "show" prop is false
+    if(!this.props.show) {
+      return null;
+    }
+
+    // The gray background
+    const backdropStyle = {
+      position: 'fixed',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'rgba(0,0,0,0.3)',
+      padding: 50
     };
 
-    this.toggleModal = this.toggleModal.bind(this);
-  }
+    // The modal "window"
+    const modalStyle = {
+      backgroundColor: '#fff',
+      borderRadius: 5,
+      maxWidth: 500,
+      minHeight: 300,
+      margin: '0 auto',
+      padding: 30,
 
-  toggleModal() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+    };
 
-  render() {
     return (
-      <div className="App">
-        <button className="open" onClick={this.toggleModal}>
-          Open
-        </button>
-        {this.state.isOpen &&
-          <Modal onToggleModal={this.toggleModal} />
-        }
+      <div className="backdrop" style={backdropStyle}>
+        <div className="modal" style={modalStyle}>
+          {this.props.children}
+
+          <div className="footer">
+            <button onClick={this.props.onClose}>
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 
+export default Modal;
 
 
 
-
-
-// // import React, { Component } from 'react';
-
-// // class Space extends Component {
-
-// //   constructor(props){
-// //     super(props);
-
-// //     this.state = {
-// //       occupied: false,
-// //     }
-// //   }
-
-// //   handleClick(){
-// //     //spot coordinates to pass back up to the modal dialog box to make the post request. If I had originally set the lot id as the lot identifier in the url, I wouldn't have had to pass the lotId back up from this location.
-// //     let spotCoordinates= {
-// //               spotId: this.props.id,
-// //               lotId: this.props.lotId,
-// //               occupied: this.props.transaction,
-// //     };
-
-// //     this.props.clicked(spotCoordinates)
-// //   }
-
-// //   render(){
-// //     let styleSpace = {
-// //       width: "20%",
-// //       height: "80px",
-// //       backgroundColor:"#fff",
-// //       borderWidth: "1px",
-// //       borderStyle: "solid",
-// //       borderColor:"#A3A3A3",
-// //     }
-
-// //     // if( this.props.car === null){
-// //     if( this.props.space === null){
-// //       return(
-// //       <div style={styleSpace} onClick={()=>this.handleClick()}></div>
-// //       )
-// //     } else {
-// //       return(
-// //       <div style={styleSpace} onClick={()=>this.handleClick()}>
-// //         <h1 className="flex-center text-center">P</h1>
-// //       </div>
-// //       )
-// //     }
-
-// //   }
-// // }
-
-export default Modal
-// // // <h1 className="car">&#128741;</h1>
+// fetch('https://lotbot3000.herokuapp.com/lots/<lotid>/<spotid>', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Accept': 'application/json',
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({
+//                     yourinfo: 'your info goes here'
+//                 }),
+//             })

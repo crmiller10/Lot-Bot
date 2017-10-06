@@ -12,13 +12,7 @@ class LotOverview extends Component {
 
   render(){
 
-    let overview = {
-      // display: 'flex',
-      // justifyContent: 'space-around',
-    }
-
     const rp = this.props.match.params.id;
-
 
     return(
     <div>
@@ -28,7 +22,7 @@ class LotOverview extends Component {
         </div>
         <div className="col-sm-8">
         <div className="text-center">
-          <h1>{rp}</h1>
+          <h1>Lot{rp}</h1>
           <OccupancyTracker currentLot={rp}/>
         </div>
 
